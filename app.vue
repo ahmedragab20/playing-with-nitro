@@ -1,5 +1,9 @@
 <template>
   <div>
-    <NuxtWelcome />
+    <div class="flex justify-center items-center h-screen">
+      <div>
+        Play with nitro!
+      </div>
+    </div>
   </div>
 </template>
