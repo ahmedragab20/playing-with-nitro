@@ -14,10 +14,5 @@ export default async (surahNumber: number) => {
 
   if (surah?.status?.toLocaleLowerCase() === 'ok') {
     return surah.data;
-  } else {
-    throw createError({
-      statusCode: 500,
-      message: 'Could not fetch surah',
-    });
   }
 };
