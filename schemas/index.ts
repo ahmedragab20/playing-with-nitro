@@ -21,10 +21,9 @@ export const Surah = z.object({
   ayahs: z.array(Ayah),
 });
 
-export function Response<T extends z.ZodTypeAny>(schema: T) {
-  return z.object({
-    status: z.number(),
-    message: z.string(),
+export const Response = <T extends z.ZodType<any>>(schema: T) =>
+  z.object({
+    code: z.number(),
+    status: z.string(),
     data: schema,
   });
-}

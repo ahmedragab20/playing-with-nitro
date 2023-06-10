@@ -41,9 +41,7 @@
 
   watch(
     () => surahNumber.value,
-    (sNumber) => {
-      console.log(`Surah Number: ${sNumber}`);
-
+    () => {
       getSurah();
     }
   );

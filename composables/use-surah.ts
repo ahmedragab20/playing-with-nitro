@@ -1,11 +1,7 @@
 import { Response, Surah } from '@/schemas';
 export default async (surahNumber: number) => {
   const surah = await useFetch(`/api/surah/${surahNumber}`, {
-    transform: (data) => {
-      console.log({ data });
-
-      return Response(Surah).parse(data);
-    },
+    transform: (data) => Response(Surah).parse(data),
   }).then((res) => {
     if (!res) {
       throw createError({
@@ -13,13 +9,15 @@ export default async (surahNumber: number) => {
         message: 'Surah not found',
       });
     }
-
-    console.log(res);
-
     return res.data.value;
   });
 
-  console.log(surah);
-
-  return surah?.data;
+  if (surah?.status?.toLocaleLowerCase() === 'ok') {
+    return surah.data;
+  } else {
+    throw createError({
+      statusCode: 500,
+      message: 'Could not fetch surah',
+    });
+  }
 };
