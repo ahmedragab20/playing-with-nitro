@@ -1,6 +1,4 @@
 export default defineEventHandler(async (event) => {
-  console.log({ event });
-
   const { surahNumber } = event.context.params!;
 
   const config = useRuntimeConfig();
